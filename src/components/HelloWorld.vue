@@ -1,138 +1,120 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
-      >.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-          target="_blank"
-          rel="noopener"
-          >babel</a
+  <v-container
+    fill-height
+    :class="{ 'm-h-80vh': $vuetify.breakpoint.mdAndUp }"
+    style="overflow-y: hidden;"
+  >
+    <v-row justify="space-around" align="center">
+      <v-col cols="12" md="6" lg="4">
+        <div>
+          <div :class="{ 'text-center': $vuetify.breakpoint.smAndDown }">
+            <h1
+              class="text-h3 font-weight-bold primary--text"
+              style="line-height: 1.4"
+            >
+              我们提供可满足
+              <br />
+              各种需求的现代 Vue 模板
+            </h1>
+
+            <p class="my-6 subtitle-1">
+              使用 Vuetify，Ant Design Vue 等 UI 库构建的易于定制的现代 Vue UI
+              模板和组件。
+              所有的组件都是模块化且完全符合响应式的，不用担心各种设备上的兼容性的问题。
+            </p>
+          </div>
+
+          <div>
+            <v-row>
+              <v-col cols="6" v-for="item in feature" :key="item.text">
+                <v-icon color="primary">
+                  mdi-check-circle-outline
+                </v-icon>
+
+                {{ item.text }}
+              </v-col>
+            </v-row>
+          </div>
+        </div>
+      </v-col>
+
+      <v-col cols="12" md="6">
+        <v-row
+          class="card-scroll"
+          :class="{ 'm-h-80vh': $vuetify.breakpoint.mdAndUp }"
         >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa"
-          target="_blank"
-          rel="noopener"
-          >pwa</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          rel="noopener"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex"
-          target="_blank"
-          rel="noopener"
-          >vuex</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          rel="noopener"
-          >eslint</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-          >Forum</a
-        >
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-          >Community Chat</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-          >Twitter</a
-        >
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-          >vue-router</a
-        >
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          rel="noopener"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-          >vue-loader</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-          rel="noopener"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
-  </div>
+          <v-col v-for="item in theme" :key="item.text" xl="6">
+            <v-card hover :href="item.href">
+              <v-img :src="item.img" />
+              <v-card-title>
+                {{ item.text }}
+              </v-card-title>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String
-  }
+
+  data: () => ({
+    feature: [
+      {
+        text: "3 个完整应用程序模板"
+      },
+      {
+        text: "20+ 单个页面"
+      },
+      {
+        text: "50+ 组件"
+      },
+      {
+        text: "使用多种 UI 库"
+      },
+      {
+        text: "完全响应式"
+      },
+      {
+        text: "可深度定制化"
+      }
+    ],
+    theme: [
+      {
+        text: "Giraffe",
+        img: require("../assets/giraffe.png"),
+        href: "https://giraffe.heroui.net/"
+      },
+      {
+        text: "Agency",
+        img: require("../assets/agency.jpg"),
+        href: "https://agency.heroui.net/"
+      },
+      {
+        text: "Shock",
+        img: require("../assets/shock.png"),
+        href: "https://shock.heroui.net/"
+      }
+    ]
+  })
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+<style lang="scss" scoped>
+$small: 960px;
+
+.m-h-80vh {
+  max-height: 80vh;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.card-scroll {
+  overflow: hidden;
+  &:hover {
+    @media screen and (min-width: $small) {
+      overflow-y: scroll;
+    }
+  }
 }
 </style>
