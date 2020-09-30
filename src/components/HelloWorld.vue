@@ -44,7 +44,7 @@
           :class="{ 'm-h-80vh': $vuetify.breakpoint.mdAndUp }"
         >
           <v-col v-for="item in theme" :key="item.text" xl="6">
-            <v-card hover :href="item.href">
+            <v-card hover :href="item.href" target="_black">
               <v-img :src="item.img" />
               <v-card-title>
                 {{ item.text }}
